@@ -29,3 +29,7 @@ func setSeed(w http.ResponseWriter, r *http.Request) {
 	json.NewDecoder(r.Body).Decode(&data)
 	randomGen = rand.New(rand.NewSource(int64(data["seed"])))
 }
+
+func login(w http.ResponseWriter, r *http.Request) {
+
+}
