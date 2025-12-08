@@ -25,4 +25,7 @@ func setSeed(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusUnauthorized)
 		return
 	}
+	var data map[string]int
+	json.NewDecoder(r.Body).Decode(&data)
+	randomGen = rand.New(rand.NewSource(int64(data["seed"])))
 }
