@@ -21,5 +21,8 @@ func random(w http.ResponseWriter, r *http.Request) {
 }
 
 func setSeed(w http.ResponseWriter, r *http.Request) {
-
+	if r.Header.Get("Authorization") != "Bearer "+token {
+		w.WriteHeader(http.StatusUnauthorized)
+		return
+	}
 }
