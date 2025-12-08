@@ -38,5 +38,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 		token = strconv.Itoa(rand.Intn(100000000000))
 		w.Header().Set("content-Type", "application/json")
 		json.NewEncoder(w).Encode(map[string]string{"token": token})
+	} else {
+		w.WriteHeader(http.StatusUnauthorized)
 	}
 }
