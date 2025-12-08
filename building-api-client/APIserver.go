@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"log"
 	"math/rand"
 	"net/http"
 	"strconv"
@@ -49,4 +50,5 @@ func main() {
 	http.HandleFunc("/random", random)
 	http.HandleFunc("/seed", setSeed)
 	http.HandleFunc("/login", login)
+	log.Fatal(http.ListenAndServe(":8888", nil))
 }
