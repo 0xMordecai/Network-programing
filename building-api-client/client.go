@@ -110,6 +110,8 @@ func (c *Client) SetSeed(seed int) error {
 	if err != nil {
 		return err
 	}
+	req.Header.Set("Authorization", "Bearer "+c.token)
+	req.Header.Set("Content-Type", "application/json")
 
 	return nil
 }
