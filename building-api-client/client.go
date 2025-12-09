@@ -1,6 +1,10 @@
 package client
 
-import "encoding/json"
+import (
+	"bytes"
+	"encoding/json"
+	"net/http"
+)
 
 type Client struct {
 	baseURL string
@@ -31,5 +35,10 @@ func (c *Client) Login(user, password string) error {
 	if err != nil {
 		return err
 	}
+	req, err := http.NewRequest("POST", c.baseURL+"/login", bytes.NewBuffer(body))
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
