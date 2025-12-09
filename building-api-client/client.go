@@ -67,3 +67,10 @@ func (c *Client) Login(user, password string) error {
 type RandomResponse struct {
 	Value int `json:"value"`
 }
+
+func (c *Client) Random() (int, error) {
+	req, err := http.NewRequest("GET", c.baseURL+"/random", nil)
+	if err != nil {
+		return 0, err
+	}
+}
