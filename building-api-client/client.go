@@ -88,4 +88,8 @@ func (c *Client) Random() (int, error) {
 	if err != nil {
 		return 0, err
 	}
+	randomResponse := RandomResponse{}
+	json.Unmarshal(responseBody, &randomResponse)
+
+	return randomResponse.Value, nil
 }
