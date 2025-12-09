@@ -22,4 +22,9 @@ func main() {
 	if err = c.SetSeed(42); err != nil {
 		log.Fatal(err)
 	}
+
+	value, err = c.Random()
+	if err != nil {
+		log.Fatal(err)
+	}
 }
