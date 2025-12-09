@@ -116,6 +116,10 @@ func (c *Client) SetSeed(seed int) error {
 	if err != nil {
 		return err
 	}
+	defer resp.Body.Close()
+	if resp.StatusCode != http.StatusOK {
+		return errors.New("server invalid response")
+	}
 
 	return nil
 }
