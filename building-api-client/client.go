@@ -93,3 +93,7 @@ func (c *Client) Random() (int, error) {
 
 	return randomResponse.Value, nil
 }
+
+type SeedRequest struct {
+	Seed int `json:"seed"`
+}
