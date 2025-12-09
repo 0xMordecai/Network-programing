@@ -12,4 +12,8 @@ func main() {
 		log.Fatal(err)
 	}
 
+	value, err := c.Random()
+	if err != nil {
+		log.Fatal(err)
+	}
 }
