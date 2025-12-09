@@ -112,6 +112,10 @@ func (c *Client) SetSeed(seed int) error {
 	}
 	req.Header.Set("Authorization", "Bearer "+c.token)
 	req.Header.Set("Content-Type", "application/json")
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return err
+	}
 
 	return nil
 }
