@@ -106,5 +106,10 @@ func (c *Client) SetSeed(seed int) error {
 	if err != nil {
 		return err
 	}
+	req, err := http.NewRequest("POST", c.baseURL+"/seed", bytes.NewBuffer(body))
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
