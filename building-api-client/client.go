@@ -14,3 +14,7 @@ func NewClient(baseURL string) *Client {
 type LoginResponse struct {
 	Token string `json:"token"`
 }
+
+func (c *Client) Login(user, password string) error {
+	return nil
+}
