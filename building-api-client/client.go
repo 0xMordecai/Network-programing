@@ -74,4 +74,9 @@ func (c *Client) Random() (int, error) {
 		return 0, err
 	}
 	req.Header.Set("Authorization", "Bearer "+c.token)
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return 0, err
+	}
+	defer resp.Body.Close()
 }
