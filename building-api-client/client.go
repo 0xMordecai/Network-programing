@@ -97,3 +97,9 @@ func (c *Client) Random() (int, error) {
 type SeedRequest struct {
 	Seed int `json:"seed"`
 }
+
+func (c *Client) SetSeed(seed int) error {
+	data := SeedRequest{
+		Seed: seed,
+	}
+}
