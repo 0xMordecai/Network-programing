@@ -57,6 +57,8 @@ func (c *Client) Login(user, password string) error {
 	if err != nil {
 		return err
 	}
+	loginResponse := LoginResponse{}
+	json.Unmarshal(responseBody, &loginResponse)
 
 	return nil
 }
