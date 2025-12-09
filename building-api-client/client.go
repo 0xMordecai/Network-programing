@@ -1,5 +1,7 @@
 package client
 
+import "encoding/json"
+
 type Client struct {
 	baseURL string
 	token   string
@@ -21,5 +23,13 @@ type LoginResponse struct {
 }
 
 func (c *Client) Login(user, password string) error {
+	data := LoginRequest{
+		User:     user,
+		Password: password,
+	}
+	body, err := json.Marshal(data)
+	if err != nil {
+		return err
+	}
 	return nil
 }
