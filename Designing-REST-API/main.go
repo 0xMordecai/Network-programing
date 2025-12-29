@@ -71,7 +71,7 @@ func handleDeleteList(w http.ResponseWriter, r *http.Request) {
 	http.Error(w, "List not found", http.StatusNotFound)
 }
 
-func handleDeleteList(w http.ResponseWriter, r *http.Request) {
+func handleUpdateList(w http.ResponseWriter, r *http.Request) {
 	id := r.PathValue("id")
 	for i, list := range allData {
 		if strconv.Itoa(list.ID) == id {
@@ -89,4 +89,5 @@ func handleDeleteList(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
+	http.Error(w, "List not found", http.StatusNotFound)
 }
