@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 )
@@ -20,5 +21,10 @@ func main() {
 }
 
 func handleCreateList(w http.ResponseWriter, r *http.Request) {
-
+	var list ShoppingList
+	err := json.NewDecoder(r.Body).Decode(&list)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
 }
