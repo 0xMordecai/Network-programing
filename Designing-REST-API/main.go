@@ -73,5 +73,14 @@ func handleDeleteList(w http.ResponseWriter, r *http.Request) {
 
 func handleDeleteList(w http.ResponseWriter, r *http.Request) {
 	id := r.PathValue("id")
-
+	for i, list := range allData {
+		if strconv.Itoa(list.ID) == id {
+			var updatedList ShoppingList
+			err := json.NewDecoder(r.Body).Decode(&updatedList)
+			if err != nil {
+				http.Error(w, err.Error(), http.StatusBadRequest)
+				return
+			}
+		}
+	}
 }
