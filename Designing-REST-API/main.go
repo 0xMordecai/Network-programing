@@ -1,5 +1,7 @@
 package main
 
+import "net/http"
+
 type ShoppingList struct {
 	ID    int      `json:"id"`
 	Name  string   `json:"name"`
@@ -7,3 +9,7 @@ type ShoppingList struct {
 }
 
 var allData []ShoppingList
+
+func main() {
+	http.ListenAndServe(":8888", nil)
+}
