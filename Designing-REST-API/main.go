@@ -18,7 +18,7 @@ func main() {
 	// The creation endpoint
 	http.HandleFunc("POST /v1/lists", handleCreateList)
 	// The list endpoint
-	http.HandleFunc("GET /v11/lists", handleListLists)
+	http.HandleFunc("GET /v1/lists", handleListLists)
 	fmt.Println("listening on port :8888")
 	http.ListenAndServe(":8888", nil)
 }
@@ -35,6 +35,14 @@ func handleCreateList(w http.ResponseWriter, r *http.Request) {
 	allData = append(allData, list)
 	w.WriteHeader(http.StatusCreated)
 	err = json.NewEncoder(w).Encode(list)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+}
+
+func handleListLists(w http.ResponseWriter, r *http.Request) {
+	data, err := json.Marshal(allData)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
