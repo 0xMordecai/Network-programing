@@ -19,6 +19,8 @@ func main() {
 	http.HandleFunc("POST /v1/lists", handleCreateList)
 	// The list endpoint
 	http.HandleFunc("GET /v1/lists", handleListLists)
+	// The delete endpoint
+	http.HandleFunc("DELETE /v1/lists/{id}", handleDeleteList)
 	fmt.Println("listening on port :8888")
 	http.ListenAndServe(":8888", nil)
 }
