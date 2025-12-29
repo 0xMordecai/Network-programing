@@ -11,5 +11,6 @@ type ShoppingList struct {
 var allData []ShoppingList
 
 func main() {
+	http.HandleFunc("POST /v1/lists", handleCreateList)
 	http.ListenAndServe(":8888", nil)
 }
