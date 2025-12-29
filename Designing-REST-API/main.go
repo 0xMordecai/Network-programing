@@ -55,3 +55,7 @@ func handleListLists(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 }
+
+func handleDeleteList(w http.ResponseWriter, r *http.Request) {
+
+}
