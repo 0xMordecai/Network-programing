@@ -28,4 +28,10 @@ func handleCreateList(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	allData = append(allData, list)
+	w.WriteHeader(http.StatusCreated)
+	err = json.NewEncoder(w).Encode(list)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 }
