@@ -72,5 +72,6 @@ func handleDeleteList(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleDeleteList(w http.ResponseWriter, r *http.Request) {
+	id := r.PathValue("id")
 
 }
