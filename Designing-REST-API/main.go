@@ -15,7 +15,10 @@ type ShoppingList struct {
 var allData []ShoppingList
 
 func main() {
+	// The creation endpoint
 	http.HandleFunc("POST /v1/lists", handleCreateList)
+	// The list endpoint
+	http.HandleFunc("GET /v11/lists", handleListLists)
 	fmt.Println("listening on port :8888")
 	http.ListenAndServe(":8888", nil)
 }
