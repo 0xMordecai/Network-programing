@@ -83,8 +83,10 @@ func handleDeleteList(w http.ResponseWriter, r *http.Request) {
 			}
 			allData[i] = updatedList
 			if err := json.NewEncoder(w).Encode(updatedList); err != nil {
-
+				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
 			}
+			return
 		}
 	}
 }
