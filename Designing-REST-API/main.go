@@ -18,3 +18,7 @@ func main() {
 	fmt.Println("listening on port :8888")
 	http.ListenAndServe(":8888", nil)
 }
+
+func handleCreateList(w http.ResponseWriter, r *http.Request) {
+
+}
