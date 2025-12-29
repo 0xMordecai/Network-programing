@@ -22,6 +22,7 @@ func main() {
 
 func handleCreateList(w http.ResponseWriter, r *http.Request) {
 	var list ShoppingList
+	// Unmarshall request's body
 	err := json.NewDecoder(r.Body).Decode(&list)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
