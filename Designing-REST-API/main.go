@@ -66,4 +66,5 @@ func handleDeleteList(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
+	http.Error(w, "List not found", http.StatusNotFound)
 }
