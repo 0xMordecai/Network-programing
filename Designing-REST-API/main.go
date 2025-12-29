@@ -1,6 +1,9 @@
 package main
 
-import "net/http"
+import (
+	"fmt"
+	"net/http"
+)
 
 type ShoppingList struct {
 	ID    int      `json:"id"`
@@ -12,5 +15,6 @@ var allData []ShoppingList
 
 func main() {
 	http.HandleFunc("POST /v1/lists", handleCreateList)
+	fmt.Println("listening on port :8888")
 	http.ListenAndServe(":8888", nil)
 }
