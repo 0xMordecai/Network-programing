@@ -57,5 +57,8 @@ func handleListLists(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleDeleteList(w http.ResponseWriter, r *http.Request) {
+	id := r.PathValue("id")
+	for i, list := range allData {
 
+	}
 }
