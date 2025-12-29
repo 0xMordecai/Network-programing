@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strconv"
 )
 
 type ShoppingList struct {
@@ -59,6 +60,10 @@ func handleListLists(w http.ResponseWriter, r *http.Request) {
 func handleDeleteList(w http.ResponseWriter, r *http.Request) {
 	id := r.PathValue("id")
 	for i, list := range allData {
-
+		if strconv.Itoa(list.ID) == id {
+			allData = append(allData[:i], allData[i+1:]...)
+			w.WriteHeader(http.StatusNoContent)
+			return
+		}
 	}
 }
