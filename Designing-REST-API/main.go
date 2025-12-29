@@ -1,7 +1,7 @@
 package main
 
 type ShoppingList struct {
-	ID    int
-	Name  string
-	Items []string
+	ID    int      `json:"id"`
+	Name  string   `json:"name"`
+	Items []string `json:"items"`
 }
