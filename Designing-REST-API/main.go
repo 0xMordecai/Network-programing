@@ -116,7 +116,10 @@ func handlePatchList(w http.ResponseWriter, r *http.Request) {
 			}
 			allData[i] = list
 			err = json.NewEncoder(w).Encode(list)
-
+			if err != nil {
+				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
+			}
 		}
 
 	}
