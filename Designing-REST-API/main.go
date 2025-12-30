@@ -120,7 +120,8 @@ func handlePatchList(w http.ResponseWriter, r *http.Request) {
 				http.Error(w, err.Error(), http.StatusInternalServerError)
 				return
 			}
+			return
 		}
-
 	}
+	http.Error(w, "List not found", http.StatusNotFound)
 }
