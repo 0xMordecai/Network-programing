@@ -98,4 +98,13 @@ func handleUpdateList(w http.ResponseWriter, r *http.Request) {
 	http.Error(w, "List not found", http.StatusNotFound)
 }
 
-func handlePatchList(w http.ResponseWriter, r *http.Request) {}
+func handlePatchList(w http.ResponseWriter, r *http.Request) {
+	id := r.PathValue("id")
+	for i, list := range allData {
+		if strconv.Itoa(list.ID) == id {
+			var patch ShoppingListPatch
+			err := json.NewDecoder(r.Body).Decode(&patch)
+
+		}
+	}
+}
