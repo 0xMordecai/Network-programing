@@ -114,6 +114,9 @@ func handlePatchList(w http.ResponseWriter, r *http.Request) {
 			if patch.Items != nil {
 				list.Items = patch.Items
 			}
+			allData[i] = list
+			err = json.NewEncoder(w).Encode(list)
+
 		}
 
 	}
