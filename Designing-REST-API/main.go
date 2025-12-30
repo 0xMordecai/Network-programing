@@ -12,6 +12,10 @@ type ShoppingList struct {
 	Name  string   `json:"name"`
 	Items []string `json:"items"`
 }
+type ShoppingListPatch struct {
+	Name  *string  `json:name`
+	Items []string `json:items`
+}
 
 var allData []ShoppingList
 
