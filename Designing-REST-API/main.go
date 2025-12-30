@@ -24,6 +24,8 @@ func main() {
 	http.HandleFunc("DELETE /v1/lists/{id}", handleDeleteList)
 	//	The update endpoint
 	http.HandleFunc("PUT /v1/lists/{id}", handleUpdateList)
+	//	The Patch endpoint
+	http.HandleFunc("PATCH /v1/lists/{id}", handlePatchList)
 	fmt.Println("listening on port :8888")
 	http.ListenAndServe(":8888", nil)
 }
