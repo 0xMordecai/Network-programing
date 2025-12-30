@@ -104,7 +104,10 @@ func handlePatchList(w http.ResponseWriter, r *http.Request) {
 		if strconv.Itoa(list.ID) == id {
 			var patch ShoppingListPatch
 			err := json.NewDecoder(r.Body).Decode(&patch)
-
+			if err != nil {
+				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
+			}
 		}
 	}
 }
