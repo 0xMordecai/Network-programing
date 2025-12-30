@@ -111,6 +111,9 @@ func handlePatchList(w http.ResponseWriter, r *http.Request) {
 			if patch.Name != nil {
 				list.Name = *patch.Name
 			}
+			if patch.Items != nil {
+				list.Items = patch.Items
+			}
 		}
 
 	}
