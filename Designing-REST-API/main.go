@@ -137,5 +137,11 @@ func handleGetList(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		_, err = w.Write(data)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		return
 	}
+	http.Error(w, "List not found", http.StatusNotFound)
 }
