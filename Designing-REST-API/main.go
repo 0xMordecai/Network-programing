@@ -160,6 +160,8 @@ func handleListPush(w http.ResponseWriter, r *http.Request) {
 			var item ListPushAction
 			err := json.NewDecoder(r.Body).Decode(&item)
 			if err != nil {
+				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
 			}
 		}
 	}
