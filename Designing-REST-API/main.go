@@ -131,17 +131,19 @@ func handlePatchList(w http.ResponseWriter, r *http.Request) {
 func handleGetList(w http.ResponseWriter, r *http.Request) {
 	id := r.PathValue("id")
 	for _, list := range allData {
-		data, err := json.Marshal(list)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
+		if strconv.Itoa(list.ID) == id {
+			data, err := json.Marshal(list)
+			if err != nil {
+				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
+			}
+			_, err = w.Write(data)
+			if err != nil {
+				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
+			}
 			return
 		}
-		_, err = w.Write(data)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		return
 	}
 	http.Error(w, "List not found", http.StatusNotFound)
 }
