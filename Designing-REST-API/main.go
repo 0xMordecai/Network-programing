@@ -128,4 +128,8 @@ func handlePatchList(w http.ResponseWriter, r *http.Request) {
 	http.Error(w, "List not found", http.StatusNotFound)
 }
 
-func handleGetList(w http.ResponseWriter, r *http.Request) {}
+func handleGetList(w http.ResponseWriter, r *http.Request) {
+	id := r.PathValue("id")
+	for _, list := range allData {
+	}
+}
