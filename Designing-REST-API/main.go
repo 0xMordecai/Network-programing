@@ -155,5 +155,9 @@ func handleGetList(w http.ResponseWriter, r *http.Request) {
 
 func handleListPush(w http.ResponseWriter, r *http.Request) {
 	id := r.PathValue("id")
+	for i, list := range allData {
+		if strconv.Itoa(list.ID) == id {
 
+		}
+	}
 }
