@@ -30,6 +30,8 @@ func main() {
 	http.HandleFunc("PUT /v1/lists/{id}", handleUpdateList)
 	//	The Patch endpoint
 	http.HandleFunc("PATCH /v1/lists/{id}", handlePatchList)
+	//	The retriver endpoint
+	http.HandleFunc("GET /v1/lists/{id}", handleGetList)
 	fmt.Println("listening on port :8888")
 	http.ListenAndServe(":8888", nil)
 }
