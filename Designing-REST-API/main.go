@@ -165,6 +165,11 @@ func handleListPush(w http.ResponseWriter, r *http.Request) {
 			}
 			list.Items = append(list.Items, item.Item)
 			allData[i] = list
+			err = json.NewEncoder(w).Encode(list)
+			if err != nil {
+				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
+			}
 		}
 	}
 }
