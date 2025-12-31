@@ -157,7 +157,10 @@ func handleListPush(w http.ResponseWriter, r *http.Request) {
 	id := r.PathValue("id")
 	for i, list := range allData {
 		if strconv.Itoa(list.ID) == id {
-
+			var item ListPushAction
+			err := json.NewDecoder(r.Body).Decode(&item)
+			if err != nil {
+			}
 		}
 	}
 }
