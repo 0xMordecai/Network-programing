@@ -153,4 +153,7 @@ func handleGetList(w http.ResponseWriter, r *http.Request) {
 	http.Error(w, "List not found", http.StatusNotFound)
 }
 
-func handleListPush(w http.ResponseWriter, r *http.Request) {}
+func handleListPush(w http.ResponseWriter, r *http.Request) {
+	id := r.PathValue("id")
+
+}
