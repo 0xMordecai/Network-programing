@@ -35,6 +35,8 @@ func main() {
 	http.HandleFunc("PATCH /v1/lists/{id}", handlePatchList)
 	//	The retriver endpoint
 	http.HandleFunc("GET /v1/lists/{id}", handleGetList)
+	//	the add-to-list action endpoint
+	http.HandleFunc("POST /v1/lists/{id}/push", handleListPush)
 	fmt.Println("listening on port :8888")
 	http.ListenAndServe(":8888", nil)
 }
