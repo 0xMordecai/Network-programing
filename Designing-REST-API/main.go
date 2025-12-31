@@ -16,6 +16,9 @@ type ShoppingListPatch struct {
 	Name  *string  `json:"name"`
 	Items []string `json:"items"`
 }
+type ListPushAction struct {
+	Item string `json:"item"`
+}
 
 var allData []ShoppingList
 
