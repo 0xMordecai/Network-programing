@@ -24,6 +24,7 @@ type User struct {
 	ID   string `json: "id"`
 	Role Role   `json: "role"`
 }
+
 type ShoppingList struct {
 	ID    int      `json:"id"`
 	Name  string   `json:"name"`
@@ -41,7 +42,10 @@ var allData []ShoppingList
 
 // Retrieving user information
 func getUserFromRequest(r *http.Request) (User, error) {
-
+	token := r.Header.Get("Authorization")
+	if token == "" {
+		return User{}, errors.New("no token")
+	}
 }
 
 func main() {
