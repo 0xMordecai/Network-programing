@@ -62,6 +62,9 @@ func generateJWTToken(userID string) (string, error) {
 
 // this function validate the JWT token by parse the token and check the signature and then we can trust the inforamtionint in the token.
 func parseJWTToken(token string) (string, error) {
+	claims := jwt.MapClaims{}
+	_, err := jwt.ParseWithClaims(token, claims, func(token *jwt.Token) (interface{}, error) {})
+
 	return "", nil
 }
 
