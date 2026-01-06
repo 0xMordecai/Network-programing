@@ -13,6 +13,13 @@ import (
 
 const secretKey = "secret"
 
+type Role string
+
+const (
+	RoleAdmin Role = "admin"
+	RoleUser  Role = "user"
+)
+
 type ShoppingList struct {
 	ID    int      `json:"id"`
 	Name  string   `json:"name"`
