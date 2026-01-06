@@ -10,7 +10,7 @@ import (
 	"github.com/golang-jwt/jwt"
 )
 
-const secret = "secret"
+const secretKey = "secret"
 
 type ShoppingList struct {
 	ID    int      `json:"id"`
@@ -52,8 +52,7 @@ func generateJWTToken(userID string) (string, error) {
 	claims["user_id"] = userID
 	claims["exp"] = time.Now().Add(1 * time.Hour).Unix()
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
-	secretKey := []byte(secret)
-	tokenString, err := token.SignedString(secretKey)
+	tokenString, err := token.SignedString([]byte(secretKey))
 	if err != nil {
 		return "", err
 	}
@@ -63,7 +62,10 @@ func generateJWTToken(userID string) (string, error) {
 // this function validate the JWT token by parse the token and check the signature and then we can trust the inforamtionint in the token.
 func parseJWTToken(token string) (string, error) {
 	claims := jwt.MapClaims{}
-	_, err := jwt.ParseWithClaims(token, claims, func(token *jwt.Token) (interface{}, error) {})
+	_, err := jwt.ParseWithClaims(token, claims,
+		func(token *jwt.Token) (interface{}, error) {
+			return []byte(secretKey), nil
+		})
 
 	return "", nil
 }
