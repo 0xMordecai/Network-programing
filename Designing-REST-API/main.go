@@ -66,6 +66,9 @@ func parseJWTToken(token string) (string, error) {
 		func(token *jwt.Token) (interface{}, error) {
 			return []byte(secretKey), nil
 		})
+	if err != nil {
+		return "", err
+	}
 
 	return "", nil
 }
