@@ -28,6 +28,11 @@ type ListPushAction struct {
 
 var allData []ShoppingList
 
+// Retrieving user information
+func getUserFromRequest(r *http.Request) (User, error) {
+
+}
+
 func main() {
 	// The creation endpoint
 	http.HandleFunc("POST /v1/lists", handleCreateList)
