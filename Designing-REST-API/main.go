@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"net/http"
 	"strconv"
@@ -69,8 +70,11 @@ func parseJWTToken(token string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-
-	return "", nil
+	userID, ok := claims["user_id"].(string)
+	if !ok {
+		return "", errors.New("invalid token")
+	}
+	return userID, nil
 }
 
 func handleCreateList(w http.ResponseWriter, r *http.Request) {
