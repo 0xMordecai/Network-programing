@@ -20,6 +20,10 @@ const (
 	RoleUser  Role = "user"
 )
 
+type User struct {
+	ID   string `json: "id"`
+	Role Role   `json: "role"`
+}
 type ShoppingList struct {
 	ID    int      `json:"id"`
 	Name  string   `json:"name"`
