@@ -46,6 +46,10 @@ func getUserFromRequest(r *http.Request) (User, error) {
 	if token == "" {
 		return User{}, errors.New("no token")
 	}
+	userID, err := parseJWTToken(token)
+	if err != nil {
+		return User{}, err
+	}
 }
 
 func main() {
