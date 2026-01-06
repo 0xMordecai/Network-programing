@@ -60,6 +60,11 @@ func generateJWTToken(userID string) (string, error) {
 	return tokenString, nil
 }
 
+// this function validate the JWT token by parse the token and check the signature and then we can trust the inforamtionint in the token.
+func parseJWTToken(token string) (string, error) {
+	return "", nil
+}
+
 func handleCreateList(w http.ResponseWriter, r *http.Request) {
 	var list ShoppingList
 	//	Unmarshall request's body
