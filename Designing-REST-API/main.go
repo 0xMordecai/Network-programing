@@ -77,6 +77,7 @@ func parseJWTToken(token string) (string, error) {
 	return userID, nil
 }
 
+// Endpoints Handlers
 func handleCreateList(w http.ResponseWriter, r *http.Request) {
 	var list ShoppingList
 	//	Unmarshall request's body
