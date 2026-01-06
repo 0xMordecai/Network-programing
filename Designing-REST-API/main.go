@@ -5,6 +5,9 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+	"time"
+
+	"github.com/golang-jwt/jwt"
 )
 
 const secretKey = "secret"
@@ -45,7 +48,9 @@ func main() {
 
 // we will use the github.com/golang-jwt/jwt package to build a "JWT"
 func generateJWTToken(userID string) (string, error) {
-
+	claims := jwt.MapClaims{}
+	claims["user_id"] = userID
+	claims["exp"] = time.Now().Add(1 * time.Hour).Unix()
 	return "", nil
 }
 
