@@ -50,6 +50,11 @@ func getUserFromRequest(r *http.Request) (User, error) {
 	if err != nil {
 		return User{}, err
 	}
+	user, err := getUserByID(userID)
+	if err != nil {
+		return User{}, err
+	}
+	return user, nil
 }
 
 func main() {
