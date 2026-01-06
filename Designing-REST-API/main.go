@@ -53,8 +53,11 @@ func generateJWTToken(userID string) (string, error) {
 	claims["exp"] = time.Now().Add(1 * time.Hour).Unix()
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	secretKey := []byte(secret)
-
-	return "", nil
+	tokenString, err := token.SignedString(secretKey)
+	if err != nil {
+		return "", err
+	}
+	return tokenString, nil
 }
 
 func handleCreateList(w http.ResponseWriter, r *http.Request) {
