@@ -7,6 +7,8 @@ import (
 	"strconv"
 )
 
+const secretKey = "secret"
+
 type ShoppingList struct {
 	ID    int      `json:"id"`
 	Name  string   `json:"name"`
@@ -39,6 +41,12 @@ func main() {
 	http.HandleFunc("POST /v1/lists/{id}/push", handleListPush)
 	fmt.Println("listening on port :8888")
 	http.ListenAndServe(":8888", nil)
+}
+
+// we will use the github.com/golang-jwt/jwt package to build a "JWT"
+func generateJWTToken(userID string) (string, error) {
+
+	return "", nil
 }
 
 func handleCreateList(w http.ResponseWriter, r *http.Request) {
