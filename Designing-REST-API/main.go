@@ -2,12 +2,9 @@ package main
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"net/http"
 	"strconv"
-
-	"github.com/golang-jwt/jwt"
 )
 
 const secretKey = "secret"
@@ -56,23 +53,6 @@ func main() {
 	http.HandleFunc("POST /v1/lists/{id}/push", handleListPush)
 	fmt.Println("listening on port :8888")
 	http.ListenAndServe(":8888", nil)
-}
-
-// this function validate the JWT token by parse the token and check the signature and then we can trust the inforamtionint in the token.
-func parseJWTToken(token string) (string, error) {
-	claims := jwt.MapClaims{}
-	_, err := jwt.ParseWithClaims(token, claims,
-		func(token *jwt.Token) (interface{}, error) {
-			return []byte(secretKey), nil
-		})
-	if err != nil {
-		return "", err
-	}
-	userID, ok := claims["user_id"].(string)
-	if !ok {
-		return "", errors.New("invalid token")
-	}
-	return userID, nil
 }
 
 // Endpoints Handlers
