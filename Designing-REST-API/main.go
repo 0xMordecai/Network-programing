@@ -40,23 +40,6 @@ type ListPushAction struct {
 
 var allData []ShoppingList
 
-// Retrieving user information
-func getUserFromRequest(r *http.Request) (User, error) {
-	token := r.Header.Get("Authorization")
-	if token == "" {
-		return User{}, errors.New("no token")
-	}
-	userID, err := parseJWTToken(token)
-	if err != nil {
-		return User{}, err
-	}
-	user, err := getUserByID(userID)
-	if err != nil {
-		return User{}, err
-	}
-	return user, nil
-}
-
 func main() {
 	// The creation endpoint
 	http.HandleFunc("POST /v1/lists", handleCreateList)
