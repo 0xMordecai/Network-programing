@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
-	"time"
 
 	"github.com/golang-jwt/jwt"
 )
@@ -57,19 +56,6 @@ func main() {
 	http.HandleFunc("POST /v1/lists/{id}/push", handleListPush)
 	fmt.Println("listening on port :8888")
 	http.ListenAndServe(":8888", nil)
-}
-
-// we will use the github.com/golang-jwt/jwt package to build a "JWT"
-func generateJWTToken(userID string) (string, error) {
-	claims := jwt.MapClaims{}
-	claims["user_id"] = userID
-	claims["exp"] = time.Now().Add(1 * time.Hour).Unix()
-	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
-	tokenString, err := token.SignedString([]byte(secretKey))
-	if err != nil {
-		return "", err
-	}
-	return tokenString, nil
 }
 
 // this function validate the JWT token by parse the token and check the signature and then we can trust the inforamtionint in the token.
