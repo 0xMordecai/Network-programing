@@ -7,8 +7,6 @@ import (
 	"strconv"
 )
 
-const secretKey = "secret"
-
 type User struct {
 	Role     string
 	Username string
