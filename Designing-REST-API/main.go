@@ -9,7 +9,7 @@ import (
 
 const secretKey = "secret"
 
-type Role string
+type 
 
 const (
 	RoleAdmin Role = "admin"
@@ -17,8 +17,9 @@ const (
 )
 
 type User struct {
-	ID   string `json: "id"`
-	Role Role   `json: "role"`
+	Role string
+	Username   string 
+	Password   string
 }
 
 type ShoppingList struct {
