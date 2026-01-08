@@ -9,17 +9,10 @@ import (
 
 const secretKey = "secret"
 
-type 
-
-const (
-	RoleAdmin Role = "admin"
-	RoleUser  Role = "user"
-)
-
 type User struct {
-	Role string
-	Username   string 
-	Password   string
+	Role     string
+	Username string
+	Password string
 }
 
 type ShoppingList struct {
