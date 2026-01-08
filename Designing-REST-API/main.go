@@ -5,12 +5,18 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+	"time"
 )
 
 type User struct {
 	Role     string
 	Username string
 	Password string
+}
+
+type Session struct {
+	Expires  time.Time
+	Username string
 }
 
 type ShoppingList struct {
