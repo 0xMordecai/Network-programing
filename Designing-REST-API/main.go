@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"math/rand/v2"
 	"net/http"
 	"strconv"
 	"time"
@@ -68,7 +69,9 @@ func handleLogin(w http.ResponseWriter, r *http.Request) {
 	var data LoginRequest
 	json.NewDecoder(r.Body).Decode(&data)
 	user := allUsers[data.Username]
-
+	if user != nil && user.Password == data.Password {
+		token := strconv.Itoa(rand.IntN(100000000000))
+	}
 }
 
 // CRUD Handlers
