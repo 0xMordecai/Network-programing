@@ -71,6 +71,10 @@ func handleLogin(w http.ResponseWriter, r *http.Request) {
 	user := allUsers[data.Username]
 	if user != nil && user.Password == data.Password {
 		token := strconv.Itoa(rand.IntN(100000000000))
+		sessions[token] = &Session{
+			Expires:  time.Now().Add(7 * 24 * time.Hour),
+			Username: user.Username,
+		}
 	}
 }
 
