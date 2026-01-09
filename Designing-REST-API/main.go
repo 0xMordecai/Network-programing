@@ -82,7 +82,13 @@ func handleLogin(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusUnauthorized)
 }
 
-// Authorization Handlers
+// Authorization middleware -
+/*
+This middleware checks the Authorization header to get the user token, then checks if the token
+is correctly formatted, if the token exists in the sessions and the session is valid, and, finally, if the
+user exists. If everything is okay, it lets the request pass to the next handler. If not, it will return
+a 401 Unauthorized status code
+*/
 func authRequired(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		token := r.Header.Get("Authorization")
