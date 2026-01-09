@@ -81,6 +81,11 @@ func handleLogin(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusUnauthorized)
 }
 
+// Authorization Handlers
+func authRequired(next http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {}
+}
+
 // CRUD Handlers
 func handleCreateList(w http.ResponseWriter, r *http.Request) {
 	var list ShoppingList
