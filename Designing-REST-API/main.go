@@ -63,7 +63,12 @@ func main() {
 	http.ListenAndServe(":8888", nil)
 }
 
-// Endpoints Handlers
+// Authentication Handlers
+func handleLogin(w http.ResponseWriter, r *http.Request) {
+
+}
+
+// CRUD Handlers
 func handleCreateList(w http.ResponseWriter, r *http.Request) {
 	var list ShoppingList
 	//	Unmarshall request's body
