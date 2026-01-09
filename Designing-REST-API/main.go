@@ -36,6 +36,11 @@ type ListPushAction struct {
 }
 
 var allData []ShoppingList
+sessions = map[string]*Session{}
+allUsers= map[string]*User{
+	"admin": {"admin", "admin", "password"},
+	"user": {"user", "user", "password"},
+}
 
 func main() {
 	// The creation endpoint
