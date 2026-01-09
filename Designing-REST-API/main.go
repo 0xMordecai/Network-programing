@@ -114,6 +114,10 @@ func authRequired(next http.HandlerFunc) http.HandlerFunc {
 	}
 }
 
+func adminRequired(next http.HandlerFunc) http.HandlerFunc {
+	return authRequired(func(w http.ResponseWriter, r *http.Request) {})
+}
+
 // CRUD Handlers
 func handleCreateList(w http.ResponseWriter, r *http.Request) {
 	var list ShoppingList
