@@ -48,19 +48,19 @@ func main() {
 	// The login endpoint
 	http.HandleFunc("POST /login", handleLogin)
 	// The creation endpoint
-	http.HandleFunc("POST /v1/lists", handleCreateList)
+	http.HandleFunc("POST /v1/lists", authRequired(handleCreateList))
 	// The list endpoint
-	http.HandleFunc("GET /v1/lists", handleListLists)
+	http.HandleFunc("GET /v1/lists", authRequired(handleListLists))
 	// The delete endpoint
-	http.HandleFunc("DELETE /v1/lists/{id}", handleDeleteList)
+	http.HandleFunc("DELETE /v1/lists/{id}", authRequired(handleDeleteList))
 	//	The update endpoint
-	http.HandleFunc("PUT /v1/lists/{id}", handleUpdateList)
+	http.HandleFunc("PUT /v1/lists/{id}", authRequired(handleUpdateList))
 	//	The Patch endpoint
-	http.HandleFunc("PATCH /v1/lists/{id}", handlePatchList)
+	http.HandleFunc("PATCH /v1/lists/{id}", authRequired(handlePatchList))
 	//	The retriver endpoint
-	http.HandleFunc("GET /v1/lists/{id}", handleGetList)
+	http.HandleFunc("GET /v1/lists/{id}", authRequired(handleGetList))
 	//	the add-to-list action endpoint
-	http.HandleFunc("POST /v1/lists/{id}/push", handleListPush)
+	http.HandleFunc("POST /v1/lists/{id}/push", authRequired(handleListPush))
 	fmt.Println("listening on port :8888")
 	http.ListenAndServe(":8888", nil)
 }
