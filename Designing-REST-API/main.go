@@ -75,7 +75,10 @@ func handleLogin(w http.ResponseWriter, r *http.Request) {
 			Expires:  time.Now().Add(7 * 24 * time.Hour),
 			Username: user.Username,
 		}
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(map[string]string{"token": token})
 	}
+
 }
 
 // CRUD Handlers
