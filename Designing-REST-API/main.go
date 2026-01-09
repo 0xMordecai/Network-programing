@@ -6,6 +6,7 @@ import (
 	"math/rand/v2"
 	"net/http"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -83,7 +84,13 @@ func handleLogin(w http.ResponseWriter, r *http.Request) {
 
 // Authorization Handlers
 func authRequired(next http.HandlerFunc) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {}
+	return func(w http.ResponseWriter, r *http.Request) {
+		token := r.Header.Get("Authorization")
+		if !strings.HasPrefix(token, "Bearer") {
+			http.Error(w, "unauthorized", http.StatusUnauthorized)
+			return
+		}
+	}
 }
 
 // CRUD Handlers
