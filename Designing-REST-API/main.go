@@ -43,6 +43,8 @@ allUsers= map[string]*User{
 }
 
 func main() {
+	// The login endpoint
+	http.HandleFunc("POST /login",handleLogin)
 	// The creation endpoint
 	http.HandleFunc("POST /v1/lists", handleCreateList)
 	// The list endpoint
