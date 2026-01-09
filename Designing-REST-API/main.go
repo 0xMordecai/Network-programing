@@ -36,15 +36,15 @@ type ListPushAction struct {
 }
 
 var allData []ShoppingList
-sessions = map[string]*Session{}
-allUsers= map[string]*User{
+var sessions = map[string]*Session{}
+var allUsers = map[string]*User{
 	"admin": {"admin", "admin", "password"},
-	"user": {"user", "user", "password"},
+	"user":  {"user", "user", "password"},
 }
 
 func main() {
 	// The login endpoint
-	http.HandleFunc("POST /login",handleLogin)
+	http.HandleFunc("POST /login", handleLogin)
 	// The creation endpoint
 	http.HandleFunc("POST /v1/lists", handleCreateList)
 	// The list endpoint
