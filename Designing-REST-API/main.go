@@ -65,6 +65,9 @@ func main() {
 
 // Authentication Handlers
 func handleLogin(w http.ResponseWriter, r *http.Request) {
+	var data LoginRequest
+	json.NewDecoder(r.Body).Decode(&data)
+	user := allUsers[data.Username]
 
 }
 
