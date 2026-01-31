@@ -116,7 +116,7 @@ func authRequired(next http.HandlerFunc) http.HandlerFunc {
 
 func adminRequired(next http.HandlerFunc) http.HandlerFunc {
 	return authRequired(func(w http.ResponseWriter, r *http.Request) {
-		token := r.Header.Get("Authrization")
+		token := r.Header.Get("Authorization")
 		token = token[7:]
 		user := allUsers[sessions[token].Username]
 		if user.Role != "admin" {
