@@ -7,16 +7,24 @@ import (
 )
 
 func main() {
+	// Accessing Database
 	db, err := sql.Open("sqlite3", "./data.db")
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	row, err := db.Query("SELECT id,users,password FROM users")
+	defer db.Close()
+
+	// Querying the Database
+	row, err := db.Query("SELECT id,users,password FROM users WHERE id=?", 1)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 	defer row.Close()
-	defer db.Close()
+	for row.Next() {
+		var id int
+		var users string
+		var password string
+	}
 }
