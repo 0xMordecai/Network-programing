@@ -12,5 +12,11 @@ func main() {
 		fmt.Println(err)
 		return
 	}
+	row, err := db.Query("SELECT id,users,password FROM users")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	defer row.Close()
 	defer db.Close()
 }
