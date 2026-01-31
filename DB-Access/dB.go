@@ -26,5 +26,11 @@ func main() {
 		var id int
 		var users string
 		var password string
+		err = row.Scan(&id, &users, &password)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		fmt.Println(id, users, password)
 	}
 }
