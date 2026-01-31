@@ -1,1 +1,6 @@
-package DB_Access
+package main
+
+import (
+	"database/sql"
+	"fmt"
+)
